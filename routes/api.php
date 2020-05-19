@@ -17,7 +17,9 @@ use Symfony\Component\Process\Exception\ProcessFailedException;
 */
 $deploy = function() {
     $process = new Process(['/var/www/deploy.sh']);
-    $process->run();
+    $process->run(function ($type, $buffer) {
+        echo $buffer;
+    });
 
     if (!$process->isSuccessful()) {
         throw new ProcessFailedException($process);
