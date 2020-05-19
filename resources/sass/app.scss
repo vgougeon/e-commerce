@@ -1,8 +1,97 @@
-// Fonts
-@import url('https://fonts.googleapis.com/css?family=Nunito');
-
-// Variables
 @import 'variables';
+@import 'utilities';
 
-// Bootstrap
-@import '~bootstrap/scss/bootstrap';
+// HEADER
+body {
+    margin: 0;
+    color: $color;
+    background: $bg;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+* {
+    box-sizing: border-box;
+}
+main {
+    padding-top: 64px;
+}
+header {
+    width: 100%;
+    height: 64px;
+    background: #444;
+    display: flex;
+    justify-content: space-between;
+    position: fixed;
+    #logo {
+        display: flex;
+        align-items: center;
+        height: 100%;
+        font-weight: 600;
+        font-size: 22px;
+        padding: 0 1rem;
+        img {
+            width: 26px;
+        }
+    }
+    nav {
+        a {
+            padding: 0.5rem 0.75rem;
+            margin-left: 0.5rem;
+            border-radius: 10px;
+            &:hover, &.active {
+                background: rgba($color, 0.05);
+            }
+        }
+    }
+    .user-info {
+        padding: 0 1rem;
+        img {
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+        }
+
+    }
+}
+.box {
+    background: $interface;
+    box-shadow: 0 2px 2px rgba(0,0,0,0.2);
+    border-radius: 5px;
+}
+.form-container {
+    max-width: 800px;
+    padding: 1rem;
+    &.small {
+        max-width: 400px;
+    }
+    
+    form {
+        
+    }
+
+}
+
+input {
+    background: mix($interface, #000, 70%);
+    height: 34px;
+    width: 100%;
+    margin: 0.5rem 0 1rem 0;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+input[type="checkbox"] {
+    padding: 1px;
+    height: 18px;
+    width: unset;
+    margin: 0 !important;
+}
+
+button, input[type="submit"]{
+    background: mix($theme, $interface, 50%);
+    padding: 5px 10px;
+    border-radius: 5px;
+    &:hover {
+        background: mix($theme, $interface, 75%);
+    }
+}
+
