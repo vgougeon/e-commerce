@@ -15,14 +15,7 @@ use Symfony\Component\Process\Exception\ProcessFailedException;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
-
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
-});
-Route::get('/deploy', deploy());
-Route::post('/deploy', deploy());
-
-function deploy() {
+$deploy = function() {
     $process = new Process(['/var/www/deploy.sh']);
     $process->run();
 
@@ -30,4 +23,13 @@ function deploy() {
         throw new ProcessFailedException($process);
     }
     echo $process->getOutput();
-}
+};
+
+Route::middleware('auth:api')->get('/user', function (Request $request) {
+    return $request->user();
+});
+
+Route::get('/deploy', $deploy);
+Route::post('/deploy', $deploy);
+
+
