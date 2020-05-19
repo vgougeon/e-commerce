@@ -33,6 +33,7 @@
                 <span class="text-xs muted">{{ number_format(Auth::user()->money, 2, ',', ' ') }}€</span>
             </div>
             <img src="https://api.adorable.io/avatars/60/njak" />
+            <button class="ml-3">Déconnexion</button>
         </div>
         @else
         <div class="flex items-center login-button mr-4">
