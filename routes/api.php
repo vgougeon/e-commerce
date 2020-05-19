@@ -19,14 +19,15 @@ use Symfony\Component\Process\Exception\ProcessFailedException;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+Route::get('/deploy', deploy());
+Route::post('/deploy', deploy());
 
-Route::post('/deploy', function() {
+function deploy() {
     $process = new Process(['/var/www/deploy.sh']);
     $process->run();
 
-    // executes after the command finishes
     if (!$process->isSuccessful()) {
         throw new ProcessFailedException($process);
     }
     echo $process->getOutput();
-});
+}
