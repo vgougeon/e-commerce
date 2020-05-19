@@ -25,6 +25,28 @@
                             </div>
                         </div>
 
+
+                        <div class="form-group row">
+                            <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Lastname') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="lastname" type="text" class="form-control @error('lastname') is-invalid @enderror" name="lastname" value="{{ old('lastname') }}" required autocomplete="lastname" autofocus>
+
+                                @error('lastname')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                          <label for="birth_date" class="col-md-4 col-form-label text-md-right">{{ __('Birth Date') }}</label>
+                          <div class="col-md-6">
+                          <input id="birth_date" type="date" class="form-control" name="birth_date" value="2000-08-26">
+                          </div>
+                        </div>
+
                         <div class="form-group row">
                             <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
 
@@ -74,4 +96,10 @@
         </div>
     </div>
 </div>
+<script type="text/javascript">
+let today = new Date().toISOString().substr(0, 10);
+document.querySelector("#today").value = today;
+
+document.querySelector("#today2").valueAsDate = new Date();
+</script>
 @endsection
