@@ -20,8 +20,8 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('/deploy', function() {
-    $process = new Process(['sh /var/www/deploy.sh']);
+Route::post('/deploy', function() {
+    $process = new Process(['/var/www/deploy.sh']);
     $process->run();
 
     // executes after the command finishes
