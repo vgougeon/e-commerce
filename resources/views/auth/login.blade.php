@@ -1,6 +1,7 @@
 @extends('layouts.template')
 
 @section('content')
+<div class="bg-header"></div>
 <main>
     <div class="form-container small box mt-5 mx-auto">
                     <h2>{{ __('Login') }}</h2>

@@ -12,6 +12,7 @@
 	<script src="{{ asset('js/app.js') }}" defer></script>
 	<link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
 	<link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/9cdc6f314c.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
@@ -33,12 +34,19 @@
                 <span class="text-xs muted">{{ number_format(Auth::user()->money, 2, ',', ' ') }}€</span>
             </div>
             <img src="https://api.adorable.io/avatars/60/njak" />
+            @if(Auth::user()->is_admin == 1)
+            <a href="{{ route('admin') }}">
+            <button class="ml-3 soft">
+                Administration
+            </button>
+            </a>
+            @endif
             <a href="{{ route('logout') }}"
                 onclick="event.preventDefault();
                                 document.getElementById('logout-form').submit();">
-            <button class="ml-3">
-                {{ __('Logout') }}
-            </button>
+                <button class="ml-3 soft">
+                    <i class="fas fa-sign-out-alt"></i>
+                </button>
             </a>
             <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                 @csrf

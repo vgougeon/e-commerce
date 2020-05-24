@@ -19,14 +19,9 @@ body {
   box-sizing: border-box;
 }
 
-main {
-  padding-top: 64px;
-}
-
 header {
   width: 100%;
   height: 64px;
-  background: #444;
   display: flex;
   justify-content: space-between;
   position: fixed;
@@ -64,6 +59,12 @@ header .user-info img {
   width: 42px;
   height: 42px;
   border-radius: 50%;
+}
+
+.bg-header {
+  width: 100%;
+  height: 64px;
+  background: #2e3035;
 }
 
 .box {
@@ -107,5 +108,10 @@ input[type=submit] {
 button:hover,
 input[type=submit]:hover {
   background: #4464cd;
+}
+
+button.soft,
+input[type=submit].soft {
+  background: rgba(255, 255, 255, 0.1);
 }
 
