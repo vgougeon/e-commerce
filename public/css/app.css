@@ -10,21 +10,93 @@ h2 {
 
 body {
   margin: 0;
+  height: 100vh;
   color: #ffffff;
   background: #1f2124;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  position: relative;
+  display: flex;
+  flex-direction: column;
 }
 
 * {
   box-sizing: border-box;
 }
 
-header {
+main {
+  flex-grow: 1;
+  overflow-y: auto;
+}
+
+main.panel {
+  display: flex;
+  position: relative;
+}
+
+main .panel-content {
+  flex-grow: 1;
+  overflow-y: auto;
+}
+
+main .sidenav {
+  padding-top: 1rem;
+  width: 300px;
+  flex-basis: 300px;
+  background: #383a3f;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+main .sidenav span.category {
   width: 100%;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  font-weight: 600;
+  padding: 0.55rem 1.5rem;
+}
+
+main .sidenav a {
+  width: 100%;
+  height: 42px;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  position: relative;
+  padding: 0 1rem 0 1.5rem;
+}
+
+main .sidenav a.active {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+main .sidenav a.active::before {
+  position: absolute;
+  content: "";
+  left: 0;
+  height: 100%;
+  width: 6px;
+  background: #7291f7;
+}
+
+main .sidenav a i {
+  width: 4rem;
+  font-size: 1rem;
+  color: #f1f4fe;
+}
+
+main .sidenav a:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+header {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  flex-basis: 64px;
   height: 64px;
   display: flex;
   justify-content: space-between;
-  position: fixed;
 }
 
 header #logo {
@@ -65,6 +137,10 @@ header .user-info img {
   width: 100%;
   height: 64px;
   background: #2e3035;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.35);
+  position: absolute;
+  z-index: 9;
+  top: 0;
 }
 
 .box {
@@ -100,14 +176,14 @@ input[type=checkbox] {
 
 button,
 input[type=submit] {
-  background: #3d539a;
+  background: #506196;
   padding: 5px 10px;
   border-radius: 5px;
 }
 
 button:hover,
 input[type=submit]:hover {
-  background: #4464cd;
+  background: #6179c7;
 }
 
 button.soft,
