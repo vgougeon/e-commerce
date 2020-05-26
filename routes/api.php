@@ -30,7 +30,12 @@ $deploy = function() {
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
-
+Route::post('/game', function(Request $request) {
+    $res = [
+        "name" => "OK"
+    ];
+    return json_encode($res);
+});
 Route::get('/deploy', $deploy);
 Route::post('/deploy', $deploy);
 

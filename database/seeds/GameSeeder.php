@@ -12,21 +12,21 @@ class GameSeeder extends Seeder
     public function run()
     {
         $game1 = new Game;
-        $game1->name = "League Of Legends";
-        $game1->price = 150.99;
-        $game1->description = "jeu du démon";
+        $game1->name = "Super Smash Bros Ultimate";
+        $game1->price = 59.99;
+        $game1->description = "Jeu de combat surpuissant";
         $game1->note = 4;
 
         $game2 = new Game;
-        $game2->name = "Animal Crossing";
-        $game2->price = 49.99;
-        $game2->description = "jeu de détente";
+        $game2->name = "Animal Crossing: New Horizon";
+        $game2->price = 59.99;
+        $game2->description = "Détente à gogo";
         $game2->note = 5;
 
         $game3 = new Game;
         $game3->name = "Nintendogs";
-        $game3->price = 1400.99;
-        $game3->description = "jeu de chien";
+        $game3->price = 19.99;
+        $game3->description = "Jeu de chien";
         $game3->note = 3;
 
         $game1->save();
