@@ -4,7 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use Symfony\Component\Process\Process;
 use Symfony\Component\Process\Exception\ProcessFailedException;
-
+use MarcReichel\IGDBLaravel\Models\Game;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -31,10 +31,9 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 Route::post('/game', function(Request $request) {
-    $res = [
-        "name" => "OK"
-    ];
-    return json_encode($res);
+    $body = json_decode($request->getContent());
+    $games = Game::search($body->name)->with(['cover'])->get()->first();
+    return json_encode($games);
 });
 Route::get('/deploy', $deploy);
 Route::post('/deploy', $deploy);
