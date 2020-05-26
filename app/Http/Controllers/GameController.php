@@ -79,8 +79,11 @@ class GameController extends Controller
      * @param  \App\Game  $game
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Game $game)
+    public function destroy($id)
     {
-        //
+        $game = game::find($id);
+        $game->delete();
+
+         return redirect(route('games.index'))->with('succes', 'Jeu supprimé avec succès !');
     }
 }
