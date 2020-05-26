@@ -45,9 +45,10 @@ class GameController extends Controller
      * @param  \App\Game  $game
      * @return \Illuminate\Http\Response
      */
-    public function show(Game $game)
+    public function show($id)
     {
-        return "test";
+      $game = game::find($id);
+      return view('showgame' , ['game' => $game]);
     }
 
     /**

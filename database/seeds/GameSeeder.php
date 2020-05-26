@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Seeder;
 use App\Game;
+use App\Category;
 class GameSeeder extends Seeder
 {
     /**
@@ -11,11 +12,14 @@ class GameSeeder extends Seeder
      */
     public function run()
     {
+
         $game1 = new Game;
         $game1->name = "Super Smash Bros Ultimate";
         $game1->price = 59.99;
         $game1->description = "Jeu de combat surpuissant";
         $game1->note = 4;
+
+
 
         $game2 = new Game;
         $game2->name = "Animal Crossing: New Horizon";
@@ -29,8 +33,12 @@ class GameSeeder extends Seeder
         $game3->description = "Jeu de chien";
         $game3->note = 3;
 
+
         $game1->save();
         $game2->save();
         $game3->save();
+        
+        $category = Category::find([1,2]);
+        $game1->categories()->attach($category);
     }
 }
