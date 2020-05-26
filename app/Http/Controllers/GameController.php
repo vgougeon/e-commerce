@@ -14,7 +14,8 @@ class GameController extends Controller
      */
     public function index()
     {
-        //
+        $games = Game::all();
+        return view('admin.games', ['games' => $games]);
     }
 
     /**
@@ -24,7 +25,7 @@ class GameController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.create.game');
     }
 
     /**
@@ -57,7 +58,7 @@ class GameController extends Controller
      */
     public function edit(Game $game)
     {
-        //
+        return view('admin.edit.game');
     }
 
     /**

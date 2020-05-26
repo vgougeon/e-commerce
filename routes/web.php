@@ -10,6 +10,7 @@ Route::middleware(['admin'])->group(function () {
     Route::resource('admin/users', 'UserController')->names([
         'index' => 'admin.members'
     ]);
+    Route::resource('admin/games', 'GameController');
 });
 
 
