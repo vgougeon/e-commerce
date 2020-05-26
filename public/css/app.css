@@ -328,14 +328,22 @@ table th,
 table td {
   padding: 0 0.8rem;
   height: 50px;
-  width: 100%;
   white-space: nowrap;
+  word-wrap: break-word;
+  text-overflow: ellipsis;
 }
 
-table .fit {
-  width: -webkit-min-content;
-  width: -moz-min-content;
-  width: min-content;
+table td.fit,
+table th.fit {
+  width: 1%;
+}
+
+table td.fit-wrap {
+  max-width: 1px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  width: 100%;
 }
 
 table th {

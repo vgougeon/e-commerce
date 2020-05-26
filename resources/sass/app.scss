@@ -248,14 +248,23 @@ h1, h2, h3 {
     }
 }
 table {
+    width: 100%;
     th, td {
         padding: 0 0.8rem;
         height: 50px;
-        width: 100%;
         white-space: nowrap;
+        word-wrap: break-word;
+        text-overflow: ellipsis;
     }
-    .fit {
-        width: min-content;
+    td.fit, th.fit {
+        width: 1%;
+    }
+    td.fit-wrap {
+        max-width: 1px;
+        white-space: nowrap; 
+        text-overflow:ellipsis; 
+        overflow: hidden;
+        width: 100%;
     }
     th {
         height: 40px;
@@ -265,7 +274,7 @@ table {
     tr:hover {
         background: mix($interface, $theme, 80%);
     }
-    width: 100%;
+    
 }
 img.cover {
     max-width: 300px;

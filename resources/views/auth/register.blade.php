@@ -3,7 +3,7 @@
 @section('content')
 <div class="bg-header"></div>
 <main>
-    <div class="form-container small box mt-5 mx-auto">
+    <article class="form-container small box mt-5 mx-auto">
     <h2>{{ __('Register') }}</h2>
         <form method="POST" action="{{ route('register') }}">
             @csrf
@@ -88,7 +88,7 @@
                 </div>
             </div>
         </form>
-    </div>
+    </article>
 </main>
 <script type="text/javascript">
 let today = new Date().toISOString().substr(0, 10);

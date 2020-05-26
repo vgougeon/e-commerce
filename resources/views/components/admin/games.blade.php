@@ -3,17 +3,17 @@
     <table>
         <thead>
             <tr>
-                <th>Nom</th>
-                <th>Prix</th>
+                <th class="fit-wrap">Nom</th>
+                <th class="fit hidden xl:table-cell">Prix</th>
                 <th class="fit">Actions</th>
             </tr>
         </thead>
         <tbody>
             @foreach ($games as $game)
                 <tr>
-                    <td>{{ $game->name }}</td>
-                    <td>{{ number_format($game->price, 2, ',', ' ') }}€</td>
-                    <td>
+                    <td class="fit-wrap">{{ $game->name }}</td>
+                    <td class="fit hidden xl:table-cell">{{ number_format($game->price, 2, ',', ' ') }}€</td>
+                    <td class="fit">
                         <div class="flex">
                             <a href="{{route('games.edit', ['game' => $game->id])}}">
                                 <button><i class="fas fa-pen"></i></button>

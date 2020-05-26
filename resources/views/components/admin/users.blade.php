@@ -2,17 +2,17 @@
 <table>
     <thead>
         <tr>
-            <th>Nom complet</th>
-            <th>Solde</th>
-            <th>Actions</th>
+            <th class="fit-wrap">Nom complet</th>
+            <th class="fit hidden xl:table-cell">Solde</th>
+            <th class="fit">Actions</th>
         </tr>
     </thead>
     <tbody>
       @foreach($users as $user)
       <tr>
-          <td>{{$user->name}} {{$user->lastname}}</td>
-          <td>{{ number_format($user->money, 2, ',', ' ') }}€</td>
-          <td>
+        <td class="fit-wrap">{{$user->name}} {{$user->lastname}}</td>
+        <td class="fit hidden xl:table-cell">{{ number_format($user->money, 2, ',', ' ') }}€</td>
+        <td class="fit">
             <div class="flex">
                 <a href="{{route('users.edit', ['user' => $user->id])}}">
                     <button><i class="fas fa-pen"></i></button>
