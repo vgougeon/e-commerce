@@ -19,6 +19,7 @@ class CreateGamesTable extends Migration
             $table->float('price');
             $table->string('cover')->nullable();
             $table->string('banner')->nullable();
+            $table->integer('stock')->default(3);
             $table->text('description');
             $table->integer('note')->nullable();
             $table->date('release_date');

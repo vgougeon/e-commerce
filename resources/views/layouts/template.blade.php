@@ -36,10 +36,15 @@
             @if(Auth::user()->is_admin == 1)
             <a href="{{ route('admin') }}">
             <button class="ml-3 soft">
-                Administration
+                A
             </button>
             </a>
             @endif
+            <a href="{{ route('/') }}">
+                <button class="ml-3 soft">
+                    <i class="fas fa-shopping-basket"></i>
+                </button>
+            </a>
             <a href="{{ route('logout') }}"
                 onclick="event.preventDefault();
                                 document.getElementById('logout-form').submit();">

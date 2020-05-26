@@ -4,6 +4,7 @@
         <thead>
             <tr>
                 <th class="fit-wrap">Nom</th>
+                <th class="fit hidden xl:table-cell">Stock</th>
                 <th class="fit hidden xl:table-cell">Prix</th>
                 <th class="fit">Actions</th>
             </tr>
@@ -12,6 +13,7 @@
             @foreach ($games as $game)
                 <tr>
                     <td class="fit-wrap">{{ $game->name }}</td>
+                    <td class="fit hidden xl:table-cell">{{ $game->stock }}</td>
                     <td class="fit hidden xl:table-cell">{{ number_format($game->price, 2, ',', ' ') }}€</td>
                     <td class="fit">
                         <div class="flex">

@@ -10,4 +10,9 @@ class Game extends Model
     {
       return $this->belongsToMany(Category::class, 'category_game');
     }
+
+    public function comments()
+    {
+      return $this->hasMany(Comment::class, 'id_game');
+    }
 }

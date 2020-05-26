@@ -35,8 +35,10 @@
     </div>
     <label for="release_date">Date de sortie</label>
     <input type="date" name="release_date" id="release_date" placeHolder="Date de sortie"/>
+    <label for="stock">Stock</label>
+    <input type="text" name="stock" id="stock" placeHolder="Stock" value="5"/>
     <label for="price">Prix (€)</label>
-    <input type="text" name="price" id="price" placeHolder="Prix"/>
+    <input type="text" name="price" id="price" placeHolder="Prix" value="19.99"/>
     <button type="submit">Créer !</button>
     </article>
 </div>

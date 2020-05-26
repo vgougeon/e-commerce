@@ -35,6 +35,8 @@
     </div>
     <label for="release_date">Date de sortie</label>
     <input type="date" name="release_date" id="release_date" placeHolder="Date de sortie" value="{{$game->release_date}}"/>
+    <label for="stock">Stock</label>
+    <input type="text" name="stock" id="stock" placeHolder="Stock" value="{{$game->stock}}"/>
     <label for="price">Prix (€)</label>
     <input type="text" name="price" id="price" placeHolder="Prix" value="{{$game->price}}"/>
     <button type="submit">Enregistrer</button>
