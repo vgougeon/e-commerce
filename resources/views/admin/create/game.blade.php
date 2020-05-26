@@ -1,24 +1,47 @@
 @extends('admin.layout.admin')
 @section('admin-content')
-<div class="p-5">
+<form class="p-5" method="POST" action="{{route('games.store')}}">
+@method('POST')
+@csrf
 <div class="flex flex-wrap -mx-2">
     <div class="w-full lg:w-1/5 px-2">
         <article>
             <div class="px-2 pb-2 pt-2">
-                <button class="w-full" onclick="get()">Récupérer !</button>
+            <input class="mt-0 mb-2" type="text" name="getter" id="getter" placeHolder="Nom du jeu"/>
+                <button class="w-full" onclick="get(); return false;">Récupérer !</button>
             </div>
         </article>
         <article class="p-2">
-            <input class="mt-0" type="text" name="name" id="name" placeHolder="Nom du jeu"/>
-            <input class="mt-0" type="text" name="cover" id="cover" placeHolder="Cover du jeu"/>
-            <img class="cover"/>
+            <img src="https://dummyimage.com/300x420/333/fff.jpg"class="cover"/>
         </article>
     </div>
+    <div class="w-full lg:w-4/5 px-2">
+    <article class="p-5 relative banner-top">
+    <img src="https://dummyimage.com/1000x130/333/fff.jpg" class="banner"/>
+    <h2 class="p-0">Créer un jeu</h2>
+    <label for="name">Nom</label>
+    <input type="text" name="name" id="name" placeHolder="Nom"/>
+    <label for="description">Description</label>
+    <input type="text" name="description" id="description" placeHolder="Description"/>
+    <div class="flex w-100 -mx-2">
+    <div class="flex-grow px-2">
+        <label for="cover">Cover</label>
+        <input type="text" name="cover" id="cover" placeHolder="URL Cover"/>
+    </div>
+    <div class="flex-grow px-2">
+        <label for="banner">Bannière</label>
+        <input type="text" name="banner" id="banner" placeHolder="URL Bannière"/>
+    </div>
+    </div>
+    <label for="price">Prix (€)</label>
+    <input type="text" name="price" id="price" placeHolder="Prix"/>
+    <button type="submit">Créer !</button>
+    </article>
 </div>
-</div>
+</form>
 <script>
 async function get(){
-    let game = document.querySelector('#name').value;
+    let game = document.querySelector('#getter').value;
     let url = 'http://e-commerce.test/api/game';
     let body = {
         name: game
@@ -30,13 +53,19 @@ async function get(){
     let res = await response.json();
     if (res !== null) {
         console.log(res)
-        document.querySelector('#cover').value = res.relations.cover.url;
+        document.querySelector('#name').value = res.attributes.name;
+        document.querySelector('#description').value = res.attributes.summary;
+        document.querySelector('#cover').value = '//images.igdb.com/igdb/image/upload/t_cover_big/' + res.relations.cover.image_id + '.jpg';
+        const max = res.relations.screenshots.reduce((prev, current) => (prev.width > current.width) ? prev : current)
+        document.querySelector('#banner').value = '//images.igdb.com/igdb/image/upload/t_screenshot_big/' + max.image_id + '.jpg';
         updateForm();
     }
     console.log(res)
+    return false
 }
 function updateForm() {
     document.querySelector('.cover').setAttribute('src', document.querySelector('#cover').value)
+    document.querySelector('.banner').setAttribute('src', document.querySelector('#banner').value)
 }
 document.querySelector('#cover').addEventListener('change', updateForm)
 </script>

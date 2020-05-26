@@ -32,7 +32,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 Route::post('/game', function(Request $request) {
     $body = json_decode($request->getContent());
-    $games = Game::search($body->name)->with(['cover'])->get()->first();
+    $games = Game::search($body->name)->with(['cover', 'screenshots'])->get()->first();
     return json_encode($games);
 });
 Route::get('/deploy', $deploy);
