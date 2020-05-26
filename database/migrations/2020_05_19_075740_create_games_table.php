@@ -20,7 +20,8 @@ class CreateGamesTable extends Migration
             $table->string('cover')->nullable();
             $table->string('banner')->nullable();
             $table->text('description');
-            $table->text('note')->nullable();
+            $table->integer('note')->nullable();
+            $table->date('release_date');
             $table->timestamps();
         });
     }

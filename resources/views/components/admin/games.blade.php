@@ -12,7 +12,7 @@
             @foreach ($games as $game)
                 <tr>
                     <td>{{ $game->name }}</td>
-                    <td>{{ $game->price }}</td>
+                    <td>{{ number_format($game->price, 2, ',', ' ') }}€</td>
                     <td>
                         <div class="flex">
                             <a href="{{route('games.edit', ['game' => $game->id])}}">
@@ -31,4 +31,5 @@
             @endforeach
         </tbody>
     </table>
+    {{ $games->links() }}
 </article>

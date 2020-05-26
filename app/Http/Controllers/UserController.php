@@ -13,8 +13,8 @@ class UserController extends Controller
      */
     public function index()
     {
-      $users = user::all();
-        return view('admin.users',['users'=> $users]);
+      $users = User::paginate(10, ['*'], 'user_page');
+      return view('admin.users',['users'=> $users]);
     }
 
     /**

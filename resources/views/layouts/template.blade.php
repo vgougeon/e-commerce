@@ -12,15 +12,14 @@
 	<script src="{{ asset('js/app.js') }}" defer></script>
 	<link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
 	<link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    <script src="https://kit.fontawesome.com/9cdc6f314c.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
-    <header>
+    <header class="{{ (request()->is('admin*')) ? 'admin-page' : '' }}">
         <div class="flex items-center">
         <div id="logo">
             <img src="{{ asset('imgs/logo.png') }}" />
-            <h1 class="ml-3">PLAYZONE</h1>
+            <h1 class="ml-2 p-0">PLAYZONE</h1>
         </div>
         <nav class="flex items-center h-100">
             <a href="{{ route('/') }}">Accueil</a>
@@ -60,6 +59,8 @@
         @endif
     </header>
     @yield('content')
+    <script src="https://kit.fontawesome.com/9cdc6f314c.js" crossorigin="anonymous"></script>
+    <script src="{{ asset('js/app.js') }}"></script>
 </body>
 
 </html>

@@ -14,7 +14,7 @@ class GameController extends Controller
      */
     public function index()
     {
-        $games = Game::all();
+        $games = Game::paginate(10, ['*'], 'game_page');
         return view('admin.games', ['games' => $games]);
     }
 
@@ -66,7 +66,7 @@ class GameController extends Controller
      */
     public function edit(Game $game)
     {
-        return view('admin.edit.game');
+        return view('admin.edit.game', ["game" => $game]);
     }
 
     /**
@@ -78,7 +78,13 @@ class GameController extends Controller
      */
     public function update(Request $request, Game $game)
     {
-        //
+        $inputs = $request->except('_token', '_method', 'getter');
+        foreach ($inputs as $key => $value) {
+            $game->$key = $value;
+        }
+        $game->save();
+
+        return redirect(route('games.index'))->with('success', 'Jeu modifié avec succès !');
     }
 
     /**

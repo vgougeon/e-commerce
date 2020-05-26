@@ -1,7 +1,7 @@
 @extends('admin.layout.admin')
 @section('admin-content')
-<form class="p-5" method="POST" action="{{route('games.store')}}">
-@method('POST')
+<form class="p-5" method="POST" action="{{route('games.update', ['game' => $game->id])}}">
+@method('PUT')
 @csrf
 <div class="flex flex-wrap -mx-2">
     <div class="w-full lg:w-1/5 px-2">
@@ -20,24 +20,24 @@
     <img src="https://dummyimage.com/1000x130/333/fff.jpg" class="banner"/>
     <h2 class="p-0">Créer un jeu</h2>
     <label for="name">Nom</label>
-    <input type="text" name="name" id="name" placeHolder="Nom"/>
+    <input type="text" name="name" id="name" placeHolder="Nom" value="{{$game->name}}" />
     <label for="description">Description</label>
-    <input type="text" name="description" id="description" placeHolder="Description"/>
+    <input type="text" name="description" id="description" placeHolder="Description" value="{{$game->description}}"/>
     <div class="flex w-100 -mx-2">
     <div class="flex-grow px-2">
         <label for="cover">Cover</label>
-        <input type="text" name="cover" id="cover" placeHolder="URL Cover"/>
+        <input type="text" name="cover" id="cover" placeHolder="URL Cover" value="{{$game->cover}}"/>
     </div>
     <div class="flex-grow px-2">
         <label for="banner">Bannière</label>
-        <input type="text" name="banner" id="banner" placeHolder="URL Bannière"/>
+        <input type="text" name="banner" id="banner" placeHolder="URL Bannière" value="{{$game->banner}}"/>
     </div>
     </div>
     <label for="release_date">Date de sortie</label>
-    <input type="date" name="release_date" id="release_date" placeHolder="Date de sortie"/>
+    <input type="date" name="release_date" id="release_date" placeHolder="Date de sortie" value="{{$game->release_date}}"/>
     <label for="price">Prix (€)</label>
-    <input type="text" name="price" id="price" placeHolder="Prix"/>
-    <button type="submit">Créer !</button>
+    <input type="text" name="price" id="price" placeHolder="Prix" value="{{$game->price}}"/>
+    <button type="submit">Enregistrer</button>
     </article>
 </div>
 </form>
@@ -73,5 +73,6 @@ function updateForm() {
 }
 document.querySelector('#cover').addEventListener('change', updateForm)
 document.querySelector('#banner').addEventListener('change', updateForm)
+updateForm()
 </script>
 @endsection
