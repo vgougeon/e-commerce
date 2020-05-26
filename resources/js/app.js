@@ -12,4 +12,7 @@ main.addEventListener('scroll', () => {
         let height = map_range(main.scrollTop, 0, (bgHeader - headerSize), bgHeader, headerSize)
         document.querySelector('.bg-header').style.height = height + "px"
     }
+    else {
+        document.querySelector('.bg-header').style.height = headerSize + "px"
+    }
 });
