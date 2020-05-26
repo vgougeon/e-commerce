@@ -36,7 +36,14 @@ class GameController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $inputs = $request->except('_token', '_method', 'getter');
+        $game = new Game;
+        foreach ($inputs as $key => $value) {
+            $game->$key = $value;
+        }
+        $game->save();
+
+        return redirect(route('games.index'))->with('success', 'Jeu créé avec succès !');
     }
 
     /**

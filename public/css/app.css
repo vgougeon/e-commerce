@@ -192,6 +192,10 @@ article {
   margin-bottom: 14px;
 }
 
+article.banner-top {
+  padding-top: 140px;
+}
+
 h1,
 h2,
 h3 {
@@ -224,5 +228,25 @@ table th {
 
 table tr:hover {
   background: #3c435c;
+}
+
+img.cover {
+  max-width: 300px;
+  margin: 0 auto;
+  width: 100%;
+  -o-object-fit: contain;
+     object-fit: contain;
+  background: #3c435c;
+}
+
+img.banner {
+  width: 100%;
+  max-height: 130px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  position: absolute;
+  left: 0;
+  top: 0;
+  opacity: 0.3;
 }
 

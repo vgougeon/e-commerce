@@ -17,10 +17,10 @@ class CreateGamesTable extends Migration
             $table->id();
             $table->string('name');
             $table->float('price');
-            $table->string('cover_img')->nullable();
-            $table->string('banner_img')->nullable();
+            $table->string('cover')->nullable();
+            $table->string('banner')->nullable();
             $table->text('description');
-            $table->text('note');
+            $table->text('note')->nullable();
             $table->timestamps();
         });
     }
