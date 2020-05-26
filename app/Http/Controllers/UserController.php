@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\User;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
@@ -13,7 +13,8 @@ class UserController extends Controller
      */
     public function index()
     {
-        return view('admin.users');
+      $users = user::all();
+        return view('admin.users',['users'=> $users]);
     }
 
     /**
@@ -79,6 +80,9 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $user = user::find($id);
+        $user->delete();
+
+         return redirect(route('admin.members'))->with('succes', 'Utilisateur supprimé avec succès !');
     }
 }

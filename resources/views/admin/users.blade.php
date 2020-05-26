@@ -1,4 +1,4 @@
 @extends('admin.layout.admin')
 @section('admin-content')
-<x-admin.users />
+<x-admin.users :users="$users"/>
 @endsection
