@@ -7,7 +7,9 @@ Route::get('/home', 'HomeController@index')->name('home');
 Auth::routes();
 Route::middleware(['admin'])->group(function () {
     Route::get('/admin', function () { return view('admin.panel'); })->name('admin');
-    Route::resource('admin/users', 'UserController');
+    Route::resource('admin/users', 'UserController')->names([
+        'index' => 'admin.members'
+    ]);
 });
 
 

@@ -13,7 +13,7 @@
     Promotions
     </a>
     <span class="category">Membres</span>
-    <a href="/">
+    <a href="{{route('admin.members') }}">
     <i class="fas fa-users"></i>
     Membres
     </a>
