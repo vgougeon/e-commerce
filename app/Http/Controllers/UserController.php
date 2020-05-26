@@ -57,7 +57,8 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        //
+        $user = user::find($id);
+        return view('admin.edit.user',['user'=>$user]);
     }
 
     /**
@@ -69,7 +70,14 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+      $inputs = $request->except('_token', '_method');
+      $user = user::find($id);
+      foreach ($inputs as $key => $value) {
+        $user->$key = $value;
+      }
+      $user->save();
+
+      return redirect(route('admin.members'))->with('success', 'Utilisateur mis a jour avec succès !');
     }
 
     /**
