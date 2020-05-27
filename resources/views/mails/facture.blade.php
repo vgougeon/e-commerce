@@ -1,20 +1,19 @@
-<h1>Customer List</h1>
+<h1>Playzone</h1>
+<h2>Facture</h2>
 <table>
   <thead>
     <tr>
-      <th>ID</th>
-      <th>Name</th>
-      <th>Email</th>
-      <th>Phone</th>
+      <th>Nom du jeu</th>
+      <th class="fit">Clé d'activation</th>
+      <th class="fit">Prix</th>
     </tr>
   </thead>
   <tbody>
-    @foreach($cart as $item)
+    @foreach($codes as $item)
       <tr>
-        <td>{{ $item->id }}</td>
-        <td>{{ $item->name }}</td>
-        <td>{{ $item->quantity }}</td>
-        <td>{{ $item->price }}</td>
+        <td>{{ $item["name"] }}</td>
+        <td class="fit">{{ $item["key"] }}</td>
+        <td class="fit">{{ $item["price"] }}</td>
       </tr>
     @endforeach
   </tbody>

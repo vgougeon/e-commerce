@@ -8,6 +8,7 @@
     @endif
     <img src="{{ $game->cover }}" />
     <div class="light-price m-2">{{ number_format($game->price, 2, ',', ' ') }}€</div>
+    <x-game.rating :game="$game" :size="'12px'"/>
 </article>
 </a>
 <span class="text-sm opacity-75 text-center">{{ \Carbon\Carbon::createFromFormat('Y-m-d', $game->release_date)->format('F Y')}}</span>

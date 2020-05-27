@@ -18,6 +18,7 @@ class CreateGameUserTable extends Migration
             $table->integer('game_id')->unsigned();
             $table->integer('user_id')->unsigned();
             $table->float('price');
+            $table->string('key');
             $table->timestamps();
         });
     }

@@ -465,6 +465,11 @@ button.fancy {
     background: $theme;
     color: white;
     cursor: pointer;
+    .star-rating {
+        position: absolute;
+        top: 7px;
+        left: 7px;
+    }
     img {
         transition: 0.2s;
     }

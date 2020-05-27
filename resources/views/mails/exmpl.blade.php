@@ -1,11 +1,10 @@
 @component('mail::message')
-Hello **{{$name ?? ''}}**,  {{-- use double space for line break --}}
-Thank you for choosing Mailtrap!
-
-Click below to start working right now
-@component('mail::button', ['url' => $link ?? ''])
-Go to your inbox
+Bonjour !
+Merci d'avoir acheté chez PLAYZONE
+Voici ta facture, ci-jointe, et nous remerciements !!!
+@component('mail::button', ['url' => 'http://51.83.45.77/'])
+Playzone
 @endcomponent
-Sincerely,
-Mailtrap team.
+Cordialement,
+FC Visiteurs.
 @endcomponent

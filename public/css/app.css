@@ -622,6 +622,12 @@ button.fancy.no-border {
   cursor: pointer;
 }
 
+.game-card .star-rating {
+  position: absolute;
+  top: 7px;
+  left: 7px;
+}
+
 .game-card img {
   transition: 0.2s;
 }

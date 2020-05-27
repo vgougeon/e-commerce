@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use PDF;
 use Auth;
+use Faker\Factory as Faker;
 use App\Mail\MailtrapExample;
 use Illuminate\Support\Facades\Mail;
 use Melihovv\ShoppingCart\Facades\ShoppingCart as Cart;
@@ -45,14 +46,17 @@ class CartController extends Controller
         if(!$stock){
             $error = "no-stock";
         }
-
+        $faker = Faker::create();
         if($error == null){ // SI ON PROCEDE A L'ACHAT
+            $codes = [];
             foreach(Cart::content() as $item){
                 $game = Game::find($item->id);
                 $game->stock = $game->stock - $item->quantity;
                 $game->save();
                 for ($i = 0; $i < $item->quantity; $i++) {
-                    $game->users()->attach(Auth::user(), ['price' => $game->price]);
+                    $key = $faker->regexify('[A-Z0-9]{4}-[A-Z0-9]{4}-[A-Z0-9]{4}-[A-Z0-9]{4}');
+                    $game->users()->attach(Auth::user(), ['price' => $game->price, 'key' => $key]);
+                    array_push($codes, ["name" => $game->name, "key" => $key, "price" => $game->price]);
                 }
             }
 
@@ -60,16 +64,18 @@ class CartController extends Controller
             Auth::user()->save();
 
             // Cart::content();
-            // Mail::to('newuser@example.com')->send(new MailtrapExample());
+            
             $date = date_create();
 
-            $pdf = PDF::loadView('mails.facture', ["total" => Cart::getTotal(), "cart" => Cart::content()]);
-            $pdf->save(storage_path().'\\app\\public\\bills\\' . Auth::user()->id . Auth::user()->name . date_timestamp_get($date) .'.pdf');
+            $pdf = PDF::loadView('mails.facture', ["codes" => $codes, "total" => Cart::getTotal(), "cart" => Cart::content()]);
+            $pdf->save(storage_path().'/app/public/bills/' . Auth::user()->id . Auth::user()->name . date_timestamp_get($date) .'.pdf');
             $bill = new Bill;
             $bill->user_id = Auth::user()->id;
-            $bill->pdf = '\\app\\public\\bills\\' . Auth::user()->id . Auth::user()->name . date_timestamp_get($date) .'.pdf';
+            $bill->pdf = '/app/public/bills/' . Auth::user()->id . Auth::user()->name . date_timestamp_get($date) .'.pdf';
             $bill->total = Cart::getTotal();
             $bill->save();
+
+            Mail::to('newuser@example.com')->send(new MailtrapExample($pdf));
 
             Cart::clear();
             Cart::store(Auth::user()->id);

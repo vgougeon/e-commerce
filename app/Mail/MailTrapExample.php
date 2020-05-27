@@ -13,9 +13,9 @@ class MailtrapExample extends Mailable
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($pdf)
     {
-        //
+        $this->pdf = $pdf;
     }
     /**
      * Build the message.
@@ -24,11 +24,10 @@ class MailtrapExample extends Mailable
      */
 public function build()
     {
-      $pdf = PDF::loadView('mails.facture');
         return $this->from('mail@example.com', 'Mailtrap')
             ->subject('Mailtrap Confirmation')
             ->markdown('mails.exmpl')
-            ->attachData($pdf->output(), "Facture.pdf")
+            ->attachData($this->pdf->output(), "Facture.pdf")
             ->with([
                 'name' => 'New Mailtrap User',
                 'link' => 'https://mailtrap.io/inboxes'
