@@ -7,7 +7,7 @@ return [
       "address" => "from@example.com",
       "name" => "Example"
   ),
-  "username" => "22b2517e9a5f76", // your username,
-  "password" => "12c4191255186e", // your password,
+  "username" => env('MAIL_USERNAME'), // your username,
+  "password" => env('MAIL_PASSWORD'), // your password,
   "sendmail" => "/usr/sbin/sendmail -bs"
 ];

@@ -7,12 +7,15 @@ use Illuminate\Support\Facades\Mail;
 
 Route::middleware(['cart'])->group(function () {
     Route::get('/', 'MainController@home')->name('/');
-    Route::get('/home', 'HomeController@index')->name('home');
+    Route::post('/search', 'MainController@search')->name('search');
+    Route::get('/home', 'MainController@home')->name('home');
     Route::get('/game/{id}', 'GameController@show')->name('game');
     Route::get('/profile/{id}', 'MainController@profile')->name('profile');
+    Route::get('/profile/bill/{id}', 'MainController@bill')->name('profile.bill');
     Route::get('/editprofile/{id}', 'MainController@edit')->name('profile.edit');
     Route::put('/editprofile/update/{user}', 'MainController@update')->name('main.update');
     Route::resource('/cart', 'CartController');
+    Route::resource('/comment', 'CommentController');
     Route::post('cart/add/{id}', 'CartController@add')->name('cart.add');
     Route::post('cart/empty', 'CartController@empty')->name('cart.empty');
     Route::post('cart/remove/{id}', 'CartController@remove')->name('cart.remove');

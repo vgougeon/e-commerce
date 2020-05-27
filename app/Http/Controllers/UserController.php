@@ -77,7 +77,7 @@ class UserController extends Controller
       }
       $user->save();
 
-      return redirect(route('main.home'))->with('success', 'Utilisateur mis a jour avec succès !');
+      return redirect(route('home'))->with('success', 'Utilisateur mis a jour avec succès !');
     }
 
     /**

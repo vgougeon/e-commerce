@@ -27,6 +27,9 @@
             <button class="fancy no-border"><i class="fas fa-shopping-basket mr-2"></i>Ajouter au panier</button>
         </form>
         </div>
+        <div class="flex my-3 mx-1">
+            <x-game.rating :game="$game" :size="'20px'"/>
+        </div>
         </div>
     </div>
     <div class="flex flex-wrap -mx-2 pt-2">
@@ -59,6 +62,16 @@
                 </div>
                 
             @endforeach
+            @if(sizeof($game->users) > 0)
+            <form class="mx-2 pb-2" method="POST" action="{{route('comment.store')}}">
+            @method('POST')
+            @csrf
+            <input type="hidden" value="{{ $game->id }}" name="game_id" />
+            <textarea name="comment" placeholder="Ajoutez ou actualisez un avis sur cet achat !"></textarea>
+            <x-game.star />
+            <button class="ml-auto block"><i class="fas fa-paper-plane mr-2"></i>GO !</button>
+            </form>
+            @endif
         </article>
         </div>
     </div>

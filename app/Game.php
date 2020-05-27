@@ -1,7 +1,6 @@
 <?php
 
 namespace App;
-
 use Illuminate\Database\Eloquent\Model;
 
 class Game extends Model
@@ -13,6 +12,11 @@ class Game extends Model
 
     public function comments()
     {
-      return $this->hasMany(Comment::class, 'id_game');
+      return $this->hasMany(Comment::class, 'game_id');
+    }
+
+    public function users()
+    {
+        return $this->belongsToMany(User::class, 'game_user')->withTimestamps();
     }
 }

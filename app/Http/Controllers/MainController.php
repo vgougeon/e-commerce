@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use Auth;
 use App\Game;
 use App\User;
+use App\Bill;
 use Illuminate\Http\Request;
 
 class MainController extends Controller
@@ -17,12 +18,31 @@ class MainController extends Controller
         return view('main.home', $data);
     }
 
+    public function search(Request $request) {
+        $data = [
+            "search" => $request->input('search'),
+            "trending" => Game::orderBy('created_at', 'DESC')->first(),
+            "games" => Game::where('name', 'like', '%' . $request->input('search') . '%')->orderBy('release_date', 'DESC')->paginate(10, ['*'], 'game_page')
+        ];
+        return view('main.home', $data);
+    }
+
     public function profile($id) {
         $data = [
             "trending" => Game::inRandomOrder()->first(),
-            "user" => User::find($id)
+            "user" => User::where('id', $id)->with('bills')->first()
         ];
         return view('main.profile', $data);
+    }
+    public function bill($id) {
+        $bill = Bill::find($id);
+        $file = storage_path() . $bill->pdf;
+
+        $headers = [
+            'Content-Type' => 'application/pdf',
+         ];
+
+        return response()->download($file, 'Facture.pdf', $headers);
     }
 
     public function edit($id){

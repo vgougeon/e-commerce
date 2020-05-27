@@ -19,6 +19,7 @@ class UserSeeder extends Seeder
       $user->birth_date = '2000-10-10';
       $user->email = 'admin@admin';
       $user->is_admin = True;
+      $user->money = 10000;
       $user->save();
 
       $user = new User;

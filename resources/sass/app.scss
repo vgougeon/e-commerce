@@ -21,6 +21,7 @@ body {
     width: 100%;
     max-width: 1250px;
     margin: 0 auto;
+    overflow: hidden;
 }
 main{
     flex-grow: 1;
@@ -87,6 +88,41 @@ main{
     }
     overflow-y: auto;
 }
+#search-bar {
+    display: flex;
+    align-items: center;
+    margin: 0 2rem;
+    position: relative;
+    &:hover, &:focus-within {
+        input.search {
+            background: rgba(mix($interface, $bg, 50%), 0.75);
+            outline: none;
+        }
+    }
+    button {
+        margin-left: -10px;
+        width: 50px;
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
+    }
+    input.search {
+        background: rgba(mix($interface, $bg, 50%), 0.45);
+        margin: 0;
+        width: 250px;
+        padding-left: 35px;
+    }
+    i.search-icon {
+        position: absolute;
+        left: 10px;
+        top: 2px;
+        bottom: 0;
+        margin: auto 0;
+        height: fit-content;
+        opacity: 1;
+        transition: 0.2s;
+    }
+}
+
 header {
     color: white;
     position: relative;
@@ -102,6 +138,7 @@ header {
     }
     @media screen and (max-width: 1000px){
         justify-content: space-between;
+        padding: 0 1rem;
     }
     #logo {
         display: flex;
@@ -109,7 +146,6 @@ header {
         height: 100%;
         font-weight: 600;
         font-size: 18px;
-        padding: 0 1rem;
         img {
             width: 22px;
         }
@@ -190,13 +226,16 @@ header {
     &.small {
         max-width: 400px;
     }
-    
-    form {
-        
-    }
 
 }
-
+textarea {
+    background: mix($interface, #000, 70%);
+    width: 100%;
+    margin: 0.5rem 0 1rem 0;
+    margin: 0;
+    border-radius: 5px;
+    padding: 10px;
+}
 input {
     background: mix($interface, #000, 70%);
     height: 34px;
@@ -535,4 +574,61 @@ background: rgba(#000, 0.5);
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
 background: rgba($interface, 1);
+}
+
+/****** Style Star Rating Widget *****/
+
+.rating { 
+  border: none;
+  float: left;
+  font-weight: 600;
+  color: rgba(255,255,255,0.2);
+}
+
+.rating > input { display: none; } 
+.rating > label:before { 
+  margin: 5px;
+  font-size: 1.25em;
+  font-family: 'Font Awesome\ 5 Free';
+  display: inline-block;
+  content: "\f005";
+}
+
+.rating > .half:before { 
+  content: "\f089";
+  position: absolute;
+}
+
+.rating > label { 
+color: rgba(255,255,255,0.2);; 
+ float: right; 
+}
+
+/***** CSS Magic to Highlight Stars on Hover *****/
+
+.rating > input:checked ~ label, /* show gold star when clicked */
+.rating:not(:checked) > label:hover, /* hover current star */
+.rating:not(:checked) > label:hover ~ label { color: #FFD700;  } /* hover previous stars in list */
+
+.rating > input:checked + label:hover, /* hover current star when changing rating */
+.rating > input:checked ~ label:hover,
+.rating > label:hover ~ input:checked ~ label, /* lighten current selection */
+.rating > input:checked ~ label:hover ~ label { color: #FFED85;  } 
+
+.star-rating {
+    display: flex;
+    align-items: center;
+}
+.back-stars {
+    display: flex;
+    color: rgba(255,255,255,0.2);
+    position: relative;
+}
+.front-stars {
+    display: flex;
+    color: rgb(255, 239, 11);
+    overflow: hidden;
+    position: absolute;
+    top: 0;
+    transition: .5s;
 }

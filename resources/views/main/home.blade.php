@@ -25,7 +25,12 @@
         {{-- <p class="pl-5">{{ $trending->description }}</p> --}}
         </div>
     </div>
+    
+    @if($search ?? '' !== '')
+    <h2 class="fancy"><i class="fas fa-gamepad mr-3"></i>Recherche pour <span class="soft-color font-normal">{{ $search }}</span></h2>
+    @else
     <h2 class="fancy"><i class="fas fa-gamepad mr-3"></i> Dernières sorties</h2>
+    @endif
     <div class="grid-custom">
     @foreach ($games as $game)
         <x-game.card :game="$game"/>

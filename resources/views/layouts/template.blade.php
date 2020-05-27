@@ -17,14 +17,21 @@
 <body>
     <header class="{{ (request()->is('admin*')) ? 'admin-page' : '' }}">
         <div class="flex items-center">
-        <div id="logo">
-            <img src="{{ asset('imgs/logo.png') }}" />
-            <h1 class="ml-2 p-0">PLAYZONE</h1>
+        <a href="{{ route('/') }}">
+            <div id="logo">
+                <img src="{{ asset('imgs/logo.png') }}" />
+                <h1 class="ml-2 p-0">PLAYZONE</h1>
+            </div>
+        </a>
+        <div id="search-bar">
+            <form action="{{ route('search') }}" method="POST" role="search">
+                @method('POST')
+                @csrf
+                <i class="fas fa-search search-icon"></i>
+                <input type="text" class="search" name="search" placeholder="Recherche..." />
+                <button type="submit"><i class="fas fa-angle-double-right"></i></button>
+            </form>
         </div>
-        <nav class="flex items-center h-100">
-            <a href="{{ route('/') }}">Accueil</a>
-            <a href="{{ route('/') }}">Jeux</a>
-        </nav>
         </div>
         @if(Auth::user())
         <div class="flex items-center user-info">

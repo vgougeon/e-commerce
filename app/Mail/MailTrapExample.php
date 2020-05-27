@@ -34,6 +34,4 @@ public function build()
                 'link' => 'https://mailtrap.io/inboxes'
             ]);
     }
-
-
 }

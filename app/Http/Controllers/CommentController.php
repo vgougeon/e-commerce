@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Comment;
+use App\Game;
+use Auth;
 use Illuminate\Http\Request;
 
 class CommentController extends Controller
@@ -35,7 +37,22 @@ class CommentController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $comment = Comment::where('user_id', Auth::user()->id)->first();
+        if(!$comment){
+            $comment = new Comment;
+        }
+        $comment->game_id = request()->input('game_id');
+        $comment->user_id = Auth::user()->id;
+        $comment->review = request()->input('comment');
+        $comment->note = request()->input('note');
+        $comment->save();
+        //Calculer la nouvelle note
+        $game = Game::find(request()->input('game_id'));
+        $game->note = Comment::where('game_id', request()->input('game_id'))->sum('note')
+        / Comment::where('game_id', request()->input('game_id'))->count();
+        $game->save();
+
+        return redirect()->back();
     }
 
     /**

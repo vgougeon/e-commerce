@@ -42,6 +42,20 @@
             @if(Auth::user()->id == $user->id)
             <article>
                 <h2 class="fancy">Mes factures</h2>
+                <table>
+                    <tbody>
+                        @foreach ($user->bills as $bill)
+                        <tr>
+                            <td>Facture {{ $bill->id }}</td>
+                            <td class="fit">
+                                <a href="{{ route('profile.bill', ['id' => $bill->id])}}" download>
+                                    <button>Télécharger</button>
+                                </a>
+                            </td>
+                        </tr>  
+                        @endforeach
+                    </tbody>
+                </table>
             </article>
             @endif
         </div>

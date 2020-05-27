@@ -8,12 +8,12 @@ class Comment extends Model
 {
     public function game()
     {
-      return $this->belongsToOne(Game::class, 'id_game');
+      return $this->belongsToOne(Game::class, 'game_id');
     }
 
     public function user()
     {
-        return $this->hasOne(User::class, 'id', 'id_user');
+        return $this->hasOne(User::class, 'id', 'user_id');
     }
     
     

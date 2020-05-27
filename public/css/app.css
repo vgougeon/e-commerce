@@ -1,3 +1,5 @@
+@charset "UTF-8";
+
 .muted {
   opacity: 0.7;
 }
@@ -33,6 +35,7 @@ body {
   width: 100%;
   max-width: 1250px;
   margin: 0 auto;
+  overflow: hidden;
 }
 
 main {
@@ -110,6 +113,46 @@ main .sidenav a:hover {
   background: rgba(255, 255, 255, 0.1);
 }
 
+#search-bar {
+  display: flex;
+  align-items: center;
+  margin: 0 2rem;
+  position: relative;
+}
+
+#search-bar:hover input.search,
+#search-bar:focus-within input.search {
+  background: rgba(39, 41, 45, 0.75);
+  outline: none;
+}
+
+#search-bar button {
+  margin-left: -10px;
+  width: 50px;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+#search-bar input.search {
+  background: rgba(39, 41, 45, 0.45);
+  margin: 0;
+  width: 250px;
+  padding-left: 35px;
+}
+
+#search-bar i.search-icon {
+  position: absolute;
+  left: 10px;
+  top: 2px;
+  bottom: 0;
+  margin: auto 0;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  opacity: 1;
+  transition: 0.2s;
+}
+
 header {
   color: white;
   position: relative;
@@ -129,6 +172,7 @@ header.admin-page {
 @media screen and (max-width: 1000px) {
   header {
     justify-content: space-between;
+    padding: 0 1rem;
   }
 }
 
@@ -138,7 +182,6 @@ header #logo {
   height: 100%;
   font-weight: 600;
   font-size: 18px;
-  padding: 0 1rem;
 }
 
 header #logo img {
@@ -254,6 +297,15 @@ header .user-info a.user-profile:hover {
 
 .form-container.small {
   max-width: 400px;
+}
+
+textarea {
+  background: #202225;
+  width: 100%;
+  margin: 0.5rem 0 1rem 0;
+  margin: 0;
+  border-radius: 5px;
+  padding: 10px;
 }
 
 input {
@@ -698,5 +750,73 @@ button.fancy.no-border {
 
 ::-webkit-scrollbar-thumb:hover {
   background: #2e3035;
+}
+
+/****** Style Star Rating Widget *****/
+
+.rating {
+  border: none;
+  float: left;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.2);
+}
+
+.rating > input {
+  display: none;
+}
+
+.rating > label:before {
+  margin: 5px;
+  font-size: 1.25em;
+  font-family: "Font Awesome 5 Free";
+  display: inline-block;
+  content: "\F005";
+}
+
+.rating > .half:before {
+  content: "\F089";
+  position: absolute;
+}
+
+.rating > label {
+  color: rgba(255, 255, 255, 0.2);
+  float: right;
+}
+
+/***** CSS Magic to Highlight Stars on Hover *****/
+
+.rating > input:checked ~ label,
+.rating:not(:checked) > label:hover,
+.rating:not(:checked) > label:hover ~ label {
+  color: #FFD700;
+}
+
+/* hover previous stars in list */
+
+.rating > input:checked + label:hover,
+.rating > input:checked ~ label:hover,
+.rating > label:hover ~ input:checked ~ label,
+.rating > input:checked ~ label:hover ~ label {
+  color: #FFED85;
+}
+
+.star-rating {
+  display: flex;
+  align-items: center;
+}
+
+.back-stars {
+  display: flex;
+  color: rgba(255, 255, 255, 0.2);
+  position: relative;
+}
+
+.front-stars {
+  display: flex;
+  color: #ffef0b;
+  overflow: hidden;
+  position: absolute;
+  top: 0;
+  transition: 0.5s;
 }
 
