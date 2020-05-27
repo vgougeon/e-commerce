@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', 'MainController@home')->name('/');
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/game/{id}', 'GameController@show')->name('game');
+Route::get('/profile/{id}', 'MainController@profile')->name('profile');
 Auth::routes();
 
 Route::middleware(['admin'])->group(function () {
