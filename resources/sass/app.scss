@@ -23,6 +23,7 @@ body {
     margin: 0 auto;
     overflow: hidden;
 }
+
 main{
     flex-grow: 1;
     flex-basis: 0;
@@ -41,6 +42,7 @@ main{
         overflow-y: auto;
     }
     .sidenav {
+        transition: 0.3s;
         padding-top: 1rem;
         width: 300px;
         flex-basis: 300px;
@@ -48,7 +50,17 @@ main{
         box-shadow: 0 2px 4px rgba(black, $shadow);
         height: 100%;
         display: flex;
+        z-index: 9;
         flex-direction: column;
+        
+        @media screen and (max-width: 1200px){
+            position: fixed;
+            overflow :hidden;
+            transform: translateX(-300px);
+            &.open {
+                transform: translateX(0px);
+            }
+        }
         span.category {
             width: 100%;
             font-size: 0.8rem;
@@ -89,10 +101,10 @@ main{
     overflow-y: auto;
 }
 #search-bar {
-    display: flex;
     align-items: center;
     margin: 0 2rem;
     position: relative;
+    
     &:hover, &:focus-within {
         input.search {
             background: rgba(mix($interface, $bg, 50%), 0.75);
@@ -134,7 +146,31 @@ header {
     display: flex;
     justify-content: space-around;
     &.admin-page {
+        padding: 0 1rem;
         justify-content: space-between;
+        @media screen and (max-width: 1200px){
+            #burger {
+                display: flex;
+            }
+            #logo {
+                display: none;
+            }
+        }
+        
+    }
+    #burger {
+        height: $header-size - 15px;
+        width: $header-size - 15px;
+        display: none;
+        justify-content: center;
+        align-items: center;
+        position: absolute;
+        left: 7px;
+        border-radius: 99px;
+        cursor: pointer;
+        &:hover {
+            background: rgba($color, 0.2);
+        }
     }
     @media screen and (max-width: 1000px){
         justify-content: space-between;
@@ -146,6 +182,7 @@ header {
         height: 100%;
         font-weight: 600;
         font-size: 18px;
+        
         img {
             width: 22px;
         }
@@ -175,6 +212,7 @@ header {
             }
         }
     }
+    
 }
 .bg-header {
     width: 100%;

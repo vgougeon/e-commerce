@@ -2,7 +2,7 @@
 @section('admin-content')
 <div class="p-5">
 <div class="flex flex-wrap -mx-2">
-    <div class="w-full lg:w-1/4 px-2">
+    <div class="w-full lg:w-2/4 px-2">
         <article>
             <h2 class="fancy">Statistiques</h2>
             <table>
@@ -29,7 +29,7 @@
             </table>
         </article>
     </div>
-    <div class="w-full lg:w-3/4 px-2">
+    <div class="w-full lg:w-2/4 px-2">
         <article>
             <h2 class="fancy">Derniers achats</h2>
             <table>

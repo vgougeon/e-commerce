@@ -9,21 +9,24 @@
 
 	<title>{{ config('app.name', 'Playzone') }}</title>
 
-	<script src="{{ asset('js/app.js') }}" defer></script>
-	<link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
-	<link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+	
 </head>
 
 <body>
     <header class="{{ (request()->is('admin*')) ? 'admin-page' : '' }}">
         <div class="flex items-center">
+        <div id="burger" class="">
+            <i class="fas fa-bars"></i>
+        </div>
         <a href="{{ route('/') }}">
             <div id="logo">
                 <img src="{{ asset('imgs/logo.png') }}" />
                 <h1 class="ml-2 p-0">PLAYZONE</h1>
             </div>
         </a>
-        <div id="search-bar">
+        <div id="search-bar" class="hidden lg:flex">
             <form action="{{ route('search') }}" method="POST" role="search">
                 @method('POST')
                 @csrf
