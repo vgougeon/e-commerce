@@ -56,7 +56,7 @@ class GameController extends Controller
     {
     //   $game = Game::find($id);
       $game = Game::where('id', $id)->with(['comments', 'comments.user'])->first();
-      return view('showgame' , ['game' => $game]);
+      return view('main.showgame' , ['game' => $game]);
     }
 
     /**

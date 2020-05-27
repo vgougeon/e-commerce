@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 
 class MainController extends Controller
 {
-    
+
     public function home() {
         setlocale(LC_TIME, 'French');
 
@@ -14,6 +14,6 @@ class MainController extends Controller
             "trending" => Game::orderBy('created_at', 'DESC')->first(),
             "games" => Game::orderBy('release_date', 'DESC')->paginate(30, ['*'], 'game_page')
         ];
-        return view('home', $data);
+        return view('main.home', $data);
     }
 }
