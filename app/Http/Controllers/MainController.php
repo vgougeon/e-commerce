@@ -25,4 +25,21 @@ class MainController extends Controller
         ];
         return view('main.profile', $data);
     }
+
+    public function edit($id){
+      $user = user::find($id);
+      return view('main.editprofile',['user'=>$user]);
+    }
+
+    public function update(Request $request, $id)
+    {
+      $inputs = $request->except('_token', '_method');
+      $user = user::find($id);
+      foreach ($inputs as $key => $value) {
+        $user->$key = $value;
+      }
+      $user->save();
+
+      return redirect(route('main.home'))->with('success', 'Utilisateur mis a jour avec succès !');
+    }
 }
