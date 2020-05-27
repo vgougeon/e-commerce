@@ -18,6 +18,13 @@ class MainController extends Controller
         return view('main.home', $data);
     }
 
+    public function profile($id) {
+        $data = [
+            "trending" => Game::inRandomOrder()->first(),
+            "user" => User::find($id)
+        ];
+        return view('main.profile', $data);
+    }
 
     public function edit($id){
       $user = user::find($id);

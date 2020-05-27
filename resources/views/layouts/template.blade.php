@@ -28,11 +28,13 @@
         </div>
         @if(Auth::user())
         <div class="flex items-center user-info">
-            <div class="flex flex-col justify-center items-end leading-tight mr-3">
+            <a href="{{ route('profile', ['id' => Auth::user()->id])}}" class="flex items-center user-profile">
+            <div class="flex flex-col justify-center items-end leading-tight mr-3 ">
                 <span class="font-semibold">{{ Auth::user()->name }}</span>
                 <span class="text-xs muted">{{ number_format(Auth::user()->money, 2, ',', ' ') }}€</span>
             </div>
-            <img src="https://api.adorable.io/avatars/60/njak" />
+            <img src="https://api.adorable.io/avatars/60/{{ Auth::user()->name }}" />
+            </a>
             @if(Auth::user()->is_admin == 1)
             <a href="{{ route('admin') }}">
             <button class="ml-3 soft">

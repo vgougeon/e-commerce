@@ -125,13 +125,19 @@ header {
         }
     }
     .user-info {
-        padding: 0 1rem;
         img {
-            width: 42px;
-            height: 42px;
+            width: 32px;
+            height: 32px;
             border-radius: 50%;
         }
-
+        a.user-profile {
+            padding: 0.35rem 0.5rem;
+            transition: 0.2s;
+            border-radius: 8px;
+            &:hover {
+                background: rgba(255, 255, 255, 0.1);
+            }
+        }
     }
 }
 .bg-header {
@@ -245,6 +251,9 @@ h1, h2, h3 {
         margin-left: 0.8rem;
         width: fit-content;
         font-size: 1.3rem;
+        &.mb-0 {
+            margin-bottom: 0;
+        }
         &::before {
             content: '';
             position: absolute;
@@ -474,6 +483,15 @@ button.fancy {
 .fadeout {
     transition: 0.2s;
 }
+.user-avatar {
+    width: 160px;
+    height: 160px;
+    border-radius: 50%;
+}
+
+
+
+
 ::-webkit-scrollbar {
 width: 4px;
 }

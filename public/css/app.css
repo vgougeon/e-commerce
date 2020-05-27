@@ -156,14 +156,20 @@ header nav a.active {
   background: rgba(255, 255, 255, 0.05);
 }
 
-header .user-info {
-  padding: 0 1rem;
+header .user-info img {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
 }
 
-header .user-info img {
-  width: 42px;
-  height: 42px;
-  border-radius: 50%;
+header .user-info a.user-profile {
+  padding: 0.35rem 0.5rem;
+  transition: 0.2s;
+  border-radius: 8px;
+}
+
+header .user-info a.user-profile:hover {
+  background: rgba(255, 255, 255, 0.1);
 }
 
 .bg-header {
@@ -344,6 +350,12 @@ h3.fancy {
   width: -moz-fit-content;
   width: fit-content;
   font-size: 1.3rem;
+}
+
+h1.fancy.mb-0,
+h2.fancy.mb-0,
+h3.fancy.mb-0 {
+  margin-bottom: 0;
 }
 
 h1.fancy::before,
@@ -624,6 +636,12 @@ button.fancy.no-border {
 
 .fadeout {
   transition: 0.2s;
+}
+
+.user-avatar {
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
 }
 
 ::-webkit-scrollbar {
