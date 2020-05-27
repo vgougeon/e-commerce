@@ -21,7 +21,11 @@
         </div>
         <div class="flex mt-2">
         <div class="price no-border">{{ number_format($game->price, 2, ',', ' ') }}€</div>
-        <a class="" href="/" /><button class="fancy no-border"><i class="fas fa-shopping-basket mr-2"></i>Ajouter au panier</button></a>
+        <form method="POST" action="{{ route('cart.add', ['id' => $game->id]) }}">
+            @method('POST')
+            @csrf
+            <button class="fancy no-border"><i class="fas fa-shopping-basket mr-2"></i>Ajouter au panier</button>
+        </form>
         </div>
         </div>
     </div>

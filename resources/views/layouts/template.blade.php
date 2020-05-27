@@ -42,8 +42,9 @@
             </button>
             </a>
             @endif
-            <a href="{{ route('/') }}">
-                <button class="ml-3 soft">
+            <a href="{{ route('cart.index') }}">
+                <button class="ml-3 soft relative">
+                    <div class="badge">{{ Cart::count() }}</div>
                     <i class="fas fa-shopping-basket"></i>
                 </button>
             </a>

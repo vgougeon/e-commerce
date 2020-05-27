@@ -3,6 +3,9 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use Auth; 
+use Illuminate\Support\Facades\View;
+use Melihovv\ShoppingCart\Facades\ShoppingCart as Cart;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -24,5 +27,12 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         //
+        View::composer('*', function($view)
+        {
+            if (Auth::check()){
+                Cart::restore(Auth::user()->id);
+            }
+        });
+        
     }
 }

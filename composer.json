@@ -15,6 +15,7 @@
         "laravel/framework": "^7.0",
         "laravel/tinker": "^2.0",
         "marcreichel/igdb-laravel": "^1.0",
+        "melihovv/laravel-shopping-cart": "^7.0",
         "orangehill/iseed": "^2.6"
     },
     "require-dev": {

@@ -15,7 +15,7 @@
         <span class="leading-none">@if($user->is_admin) Administrateur @else Membre @endif</span>
         <h2 class="text-shadow m-0 p-0 text-2xl leading-none">{{ $user->name }} {{ $user->lastname }}</h2></a>
         @if(Auth::user()->id == $user->id)
-        <a class="mt-3" href="/" /><button ><i class="fas fa-edit mr-2"></i>Modifier mon profil</button></a>
+        <a class="mt-3" href="{{ route('profile.edit', ['id' => $user->id])}}" /><button ><i class="fas fa-edit mr-2"></i>Modifier mon profil</button></a>
         @endif
         {{-- <p class="pl-5">{{ $trending->description }}</p> --}}
         </div>
@@ -27,14 +27,14 @@
             <article>
                 <div class="flex justify-between items-center">
                 <h2 class="fancy mb-0">Solde : <span class="soft-color font-light">{{ number_format($user->money, 2, ',', ' ') }}€</span></h2>
-                <a href="/" class="mr-3">Ajouter des fonds</a>
+                <a href="{{ route('profile.edit', ['id' => $user->id])}}" class="mr-3">Ajouter des fonds</a>
                 </div>
             </article>
             @endif
             <article>
                 <div class="flex justify-between items-center">
                 <h2 class="fancy mb-0">Mes informations</h2>
-                <a href="/" class="mr-3">Modifier</a>
+                <a href="{{ route('profile.edit', ['id' => $user->id])}}" class="mr-3">Modifier</a>
                 </div>
             </article>
         </div>

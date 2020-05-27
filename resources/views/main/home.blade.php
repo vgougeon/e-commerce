@@ -31,6 +31,7 @@
         <x-game.card :game="$game"/>
     @endforeach
     </div>
+    {{ $games->links() }}
 </div>
 
 </main>
