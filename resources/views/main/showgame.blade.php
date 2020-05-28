@@ -15,8 +15,8 @@
         <a href="{{ route('game', ["id" => $game->id])}}"><h2 class="text-shadow m-0 p-0 text-2xl leading-none">{{ $game->name }}</h2></a>
         <div class="flex -mx-1 mt-2">
             <div class="game-category mx-1">RPG</div>
-            <div class="game-category mx-1">J-RPG</div>
-            <div class="game-category mx-1">Combat</div>
+            <div class="game-category mx-1">Aventure</div>
+            <div class="game-category mx-1">Réflexion</div>
             <div class="game-category mx-1">Stratégie</div>
         </div>
         <div class="flex mt-2">
