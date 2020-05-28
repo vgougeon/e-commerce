@@ -13,7 +13,7 @@ class MainController extends Controller
     public function home() {
         $data = [
             "trending" => Game::orderBy('created_at', 'DESC')->first(),
-            "games" => Game::orderBy('release_date', 'DESC')->paginate(10, ['*'], 'game_page')
+            "games" => Game::orderBy('release_date', 'DESC')->paginate(21, ['*'], 'game_page')
         ];
         return view('main.home', $data);
     }

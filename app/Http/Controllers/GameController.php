@@ -55,9 +55,16 @@ class GameController extends Controller
     public function show($id)
     {
     //   $game = Game::find($id);
-      $game = Game::where('id', $id)->with(['comments', 'comments.user', 'users' => function($query) {
-          $query->where('user_id', '=', Auth::user()->id);
-      }])->first();
+    if(Auth::check()){
+        $game = Game::where('id', $id)->with(['comments', 'comments.user', 'users' => function($query) {
+            $query->where('user_id', '=', Auth::user()->id || '0');
+        }])->first();
+    }
+    else {
+        $game = Game::where('id', $id)->with(['comments', 'comments.user', 'users' => function($query) {
+            $query->where('user_id', '=', 0);
+        }])->first();
+    }
     //   return print_r($game);
       return view('main.showgame' , ['game' => $game]);
     }
