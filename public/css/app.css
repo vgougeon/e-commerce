@@ -5,7 +5,7 @@
 }
 
 .soft-color {
-  color: rgba(57, 73, 124, 0.8);
+  color: rgba(185, 200, 251, 0.8);
 }
 
 h2 {
@@ -17,13 +17,13 @@ h2 {
 body {
   margin: 0;
   height: 100vh;
-  color: #000000;
-  background: #fafafa;
+  color: #ffffff;
+  background: #1f2124;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   position: relative;
   display: flex;
   flex-direction: column;
-  scrollbar-color: #fff #fff;
+  scrollbar-color: #2e3035 #2e3035;
   scrollbar-width: thin;
 }
 
@@ -66,8 +66,8 @@ main .sidenav {
   padding-top: 1rem;
   width: 300px;
   flex-basis: 300px;
-  background: #fff;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.34);
+  background: #2e3035;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.35);
   height: 100%;
   display: flex;
   z-index: 9;
@@ -105,7 +105,7 @@ main .sidenav a {
 }
 
 main .sidenav a.active {
-  background: rgba(0, 0, 0, 0.05);
+  background: rgba(255, 255, 255, 0.05);
 }
 
 main .sidenav a.active::before {
@@ -120,11 +120,11 @@ main .sidenav a.active::before {
 main .sidenav a i {
   width: 4rem;
   font-size: 1rem;
-  color: #0b0f19;
+  color: #f1f4fe;
 }
 
 main .sidenav a:hover {
-  background: rgba(0, 0, 0, 0.1);
+  background: rgba(255, 255, 255, 0.1);
 }
 
 #search-bar {
@@ -135,7 +135,7 @@ main .sidenav a:hover {
 
 #search-bar:hover input.search,
 #search-bar:focus-within input.search {
-  background: rgba(253, 253, 253, 0.75);
+  background: rgba(39, 41, 45, 0.75);
   outline: none;
 }
 
@@ -147,7 +147,7 @@ main .sidenav a:hover {
 }
 
 #search-bar input.search {
-  background: rgba(253, 253, 253, 0.45);
+  background: rgba(39, 41, 45, 0.45);
   margin: 0;
   width: 250px;
   padding-left: 35px;
@@ -206,7 +206,7 @@ header #burger {
 }
 
 header #burger:hover {
-  background: rgba(0, 0, 0, 0.2);
+  background: rgba(255, 255, 255, 0.2);
 }
 
 @media screen and (max-width: 1000px) {
@@ -236,7 +236,7 @@ header nav a {
 
 header nav a:hover,
 header nav a.active {
-  background: rgba(0, 0, 0, 0.05);
+  background: rgba(255, 255, 255, 0.05);
 }
 
 header .user-info img {
@@ -259,7 +259,7 @@ header .user-info a.user-profile:hover {
   width: 100%;
   height: 60px;
   background: #5e7ece;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.34);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.35);
   position: absolute;
   z-index: 9;
   top: 0;
@@ -340,7 +340,7 @@ header .user-info a.user-profile:hover {
 }
 
 textarea {
-  background: #b3b3b3;
+  background: #202225;
   width: 100%;
   margin: 0.5rem 0 1rem 0;
   margin: 0;
@@ -349,7 +349,7 @@ textarea {
 }
 
 input {
-  background: #b3b3b3;
+  background: #202225;
   height: 34px;
   width: 100%;
   margin: 0.5rem 0 1rem 0;
@@ -366,19 +366,19 @@ input[type=checkbox] {
 
 button,
 input[type=submit] {
-  background: #b9c8fb;
+  background: #506196;
   padding: 5px 10px;
   border-radius: 5px;
 }
 
 button:hover,
 input[type=submit]:hover {
-  background: #95adf9;
+  background: #6179c7;
 }
 
 button.soft,
 input[type=submit].soft {
-  background: rgba(0, 0, 0, 0.1);
+  background: rgba(255, 255, 255, 0.1);
 }
 
 button.soft:hover,
@@ -387,8 +387,8 @@ input[type=submit].soft:hover {
 }
 
 article {
-  background: #fff;
-  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.34);
+  background: #2e3035;
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.35);
   margin-bottom: 14px;
 }
 
@@ -492,12 +492,12 @@ table td.fit-wrap {
 
 table th {
   height: 40px;
-  background: #e6e6e6;
+  background: #434549;
   text-align: start;
 }
 
 table tr:hover {
-  background: #e3e9fd;
+  background: #3c435c;
 }
 
 img.cover {
@@ -506,7 +506,7 @@ img.cover {
   width: 100%;
   -o-object-fit: contain;
      object-fit: contain;
-  background: #e3e9fd;
+  background: #3c435c;
 }
 
 img.banner {
@@ -532,7 +532,7 @@ ul.pagination li {
 
 ul.pagination li a,
 ul.pagination li span {
-  background: rgba(0, 0, 0, 0.1);
+  background: rgba(255, 255, 255, 0.1);
   border-radius: 100%;
   display: flex;
   justify-content: center;
@@ -546,7 +546,7 @@ ul.pagination li span {
 }
 
 ul.pagination li a:hover {
-  background: rgba(0, 0, 0, 0.3);
+  background: rgba(255, 255, 255, 0.3);
 }
 
 ul.pagination li.active span {
@@ -563,7 +563,7 @@ ul.pagination li.active span {
 
 .game-wrapper .game-cover {
   height: 100%;
-  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.34);
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.35);
 }
 
 .text-shadow {
@@ -745,7 +745,7 @@ button.fancy.no-border {
 .badge {
   background: rgba(114, 145, 247, 0.7);
   font-weight: 600;
-  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.34);
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.35);
   width: 22px;
   height: 22px;
   border-radius: 50%;
@@ -795,7 +795,7 @@ button.fancy.no-border {
 /* Handle on hover */
 
 ::-webkit-scrollbar-thumb:hover {
-  background: white;
+  background: #2e3035;
 }
 
 /****** Style Star Rating Widget *****/
