@@ -46,7 +46,7 @@
 <script>
 async function get(){
     let game = document.querySelector('#getter').value;
-    let url = 'http://e-commerce.test/api/game';
+    let url = 'http://51.83.45.77/api/game';
     let body = {
         name: game
     }
@@ -62,9 +62,12 @@ async function get(){
         document.querySelector('#cover').value = '//images.igdb.com/igdb/image/upload/t_cover_big/' + res.relations.cover.image_id + '.jpg';
         const max = res.relations.screenshots.reduce((prev, current) => (prev.width > current.width) ? prev : current)
         document.querySelector('#banner').value = '//images.igdb.com/igdb/image/upload/t_screenshot_big/' + max.image_id + '.jpg';
-        const date = res.relations.release_dates[res.relations.release_dates.length - 1]
-        document.querySelector('#release_date').value = new Date(date.date * 1000).toJSON().slice(0,10)
         updateForm();
+        const release_dates = res.relations.release_dates.filter(item => item.category === 0)
+        const date = release_dates[release_dates.length - 1]
+        let dateinput = new Date(date.date * 1000).toJSON()
+        console.log(dateinput)
+        document.querySelector('#release_date').value = dateinput.slice(0,10)
     }
     console.log(res)
     return false

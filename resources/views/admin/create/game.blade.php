@@ -46,7 +46,7 @@
 <script>
 async function get(){
     let game = document.querySelector('#getter').value;
-    let url = 'http://e-commerce.test/api/game';
+    let url = 'http://51.83.45.77/api/game';
     let body = {
         name: game
     }
